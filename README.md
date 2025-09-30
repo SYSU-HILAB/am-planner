@@ -7,6 +7,9 @@
   <a href="https://bilibili.com/video/BV1J5n1zAEdH/">
     <img src="https://img.shields.io/badge/Video-Bilibili-blue.svg" alt="Video">
   </a>
+  <a href="https://youtu.be/iuNFi-0dTUE">
+    <img src="https://img.shields.io/badge/Video-YouTube-red.svg" alt="YouTube">
+  </a>
   <a href="https://am-planner.github.io">
     <img src="https://img.shields.io/badge/Project-Page-green.svg" alt="Project Page">
   </a>
