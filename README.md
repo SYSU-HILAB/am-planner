@@ -4,7 +4,7 @@
   <a href="https://arxiv.org/abs/2501.06493">
     <img src="https://img.shields.io/badge/Paper-arXiv-red.svg" alt="Paper">
   </a>
-  <a href="https://www.bilibili.com/video/BV1pxcHebEqr?vd_source=3bacea077de525a48604ad1df69038ed">
+  <a href="https://bilibili.com/video/BV1J5n1zAEdH/">
     <img src="https://img.shields.io/badge/Video-Bilibili-blue.svg" alt="Video">
   </a>
   <a href="https://am-planner.github.io">
@@ -13,7 +13,7 @@
 </p>
 
 <div align="center">
-    <a href="https://www.bilibili.com/video/BV1pxcHebEqr/?spm_id_from=333.1387.homepage.video_card.click&vd_source=d450cee11e9b588cf172b8ee1b211101" target="_blank">
+    <a href="https://bilibili.com/video/BV1J5n1zAEdH/" target="_blank">
     <img src="./assets/cover.JPG" width="50%" />
     </a>
 </div>
