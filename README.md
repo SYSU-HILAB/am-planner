@@ -3,7 +3,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://arxiv.org/abs/2501.06493)
 [![Video](https://img.shields.io/badge/Video-Bilibili-blue.svg)](https://www.bilibili.com/video/BV1pxcHebEqr?vd_source=3bacea077de525a48604ad1df69038ed)
-[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://github.com/am-planner.github.io)
+[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](http://am-planner.github.io)
 
 <div align="center">
     <a href="https://www.bilibili.com/video/BV1pxcHebEqr/?spm_id_from=333.1387.homepage.video_card.click&vd_source=d450cee11e9b588cf172b8ee1b211101" target="_blank">
