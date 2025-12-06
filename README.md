@@ -51,10 +51,7 @@ conda install conda-forge::autodiff
 pip install -r requirements.txt
 
 # Install ROS dependencies
-sudo apt-get install ros-${ROS_DISTRO}-vrpn* \
-   ros-${ROS_DISTRO}-mavros \
-   ros-${ROS_DISTRO}-octomap-ros \
-   pybind11-dev python3-pybind11
+sudo apt-get install ros-${ROS_DISTRO}-octomap-ros pybind11-dev python3-pybind11
 ```
 
 ### 2.3 Setup Polynomial_DiT
