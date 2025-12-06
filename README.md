@@ -37,7 +37,7 @@ AM-Planner is a novel whole-body integrated motion planning framework for quadro
 
 - **ROS Noetic** (Recommended!)
 - Python 3.8
-- CUDA (for GPU acceleration)
+- CUDA 11.8 (Recommended!)
 
 ### 2.2 Setup Environment
 
