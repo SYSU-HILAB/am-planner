@@ -15,11 +15,9 @@
 
 **[2025.9.26]** Paper accepted by *IEEE Transactions on Robotics (T-RO)* 🚀🎉
 
+**[2025.12.4]** 📝 Our paper is now published! Read it on [IEEE Xplore](https://ieeexplore.ieee.org/document/11219352).
+
 **[2025.12.6]** 🚩 Code released! Find the source in the [`am-planner`](https://github.com/SYSU-HILAB/am-planner) repository.
-
-## Main Contributors
-
-[Weiliang Deng（邓伟亮）](https://dwl2021.github.io)  [Hongming Chen（陈鸿铭）](https://xiaodao-chen.github.io) 
 
 
 ## 1. Overview
