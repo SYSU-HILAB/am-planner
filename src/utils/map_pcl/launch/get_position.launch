@@ -1,0 +1,10 @@
+<launch>
+    <node name="visual_pcl" pkg="map_pcl" type="visual_pcl" output="screen">
+        <param name="pcd_file_path" value="$(find map_pcl)/pcd/map.pcd"/>
+        <param name="frame_id" value="world"/>
+        <remap from="~global_map" to="/global_map"/>
+    </node>
+
+    <!-- rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_pcl)/config/get_position.rviz" output="screen" />
+</launch>

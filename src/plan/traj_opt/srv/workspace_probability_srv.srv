@@ -1,0 +1,5 @@
+float64[] input
+bool need_grads
+---
+float64[] prediction
+float64[] grad

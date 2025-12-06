@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro" 
+  name="delta_display">
+  <xacro:property name="scale" value="$(arg scale)"/>
+  <!-- body frame -->
+  <link
+    name="body">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh 
+          filename="package://delta_display/meshes/drone.dae" scale="${0.02 * scale} ${0.02 * scale} ${0.02 * scale}"
+        />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/drone.dae" scale="${0.02 * scale} ${0.02 * scale} ${0.02 * scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- end_effector frame -->
+  <link
+    name="end_effector">
+    <inertial>
+      <origin
+        xyz="${1.05022379681685E-11 * scale} ${1.04348152288204E-05 * scale} ${0.0134141479910183 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.190899076497778" />
+      <inertia
+        ixx="5.48051770484652E-05"
+        ixy="4.83843397592798E-16"
+        ixz="-1.42625064137487E-14"
+        iyy="5.47729992092801E-05"
+        iyz="6.28785019280335E-11"
+        izz="9.31531830310123E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/end_effector.STL" scale="${scale} ${scale} ${scale}"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/end_effector.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- fixed joint connetting body and end_effector -->
+  <joint
+    name="ini_connect"
+    type="fixed">
+    <origin
+      xyz="0 0 ${-0.05 * scale}"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="body" />
+    <child
+      link="end_effector" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <!-- active arm 1 frame -->
+  <link
+    name="AA_1">
+    <inertial>
+      <origin
+        xyz="${0.0380991106911005 * scale} -${2.68461308738921E-10 * scale} ${-7.29395446819048E-10 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.012937617367084" />
+      <inertia
+        ixx="2.54377431228279E-06"
+        ixy="5.88230057181413E-16"
+        ixz="-2.10666308617004E-14"
+        iyy="3.85326679659789E-06"
+        iyz="-5.08180224487089E-14"
+        izz="2.23249245475923E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/AA_1.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/AA_1.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- revolute joint of active arm 1 -->
+  <joint
+    name="m1_1"
+    type="revolute">
+    <origin
+      xyz="${0.05889 * scale} ${0.034 * scale} ${0.0195 * scale}"
+      rpy="-1.5708 0.015527 0.5236" />
+    <parent
+      link="end_effector" />
+    <child
+      link="AA_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <!-- active arm 2 frame -->
+  <link
+    name="AA_2">
+    <inertial>
+      <origin
+        xyz="${0.0380991283192782 * scale} ${7.42436945255776E-11 * scale} 1${.57437354819656E-10 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.0129376209608552" />
+      <inertia
+        ixx="2.54377440358904E-06"
+        ixy="2.12051013751794E-15"
+        ixz="3.74461219667148E-15"
+        iyy="3.85326686630953E-06"
+        iyz="-7.39915823358907E-14"
+        izz="2.23249249563489E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/AA_2.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/AA_2.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- revolute joint of active arm 2 -->
+  <joint
+    name="m2_1"
+    type="revolute">
+    <origin
+      xyz="${-0.05889 *scale} ${0.034 * scale} ${0.0195 * scale}"
+      rpy="-1.5708 0.0086242 2.618" />
+    <parent
+      link="end_effector" />
+    <child
+      link="AA_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <!-- active arm 3 frame -->
+  <link
+    name="AA_3">
+    <inertial>
+      <origin
+        xyz="${0.0380991059180173 * scale} ${1.98751765045913E-10 * scale} ${5.53843387818276E-10 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.0129376163880066" />
+      <inertia
+        ixx="2.54377429077657E-06"
+        ixy="1.27405900925417E-15"
+        ixz="1.52258175200672E-14"
+        iyy="3.85326678122453E-06"
+        iyz="-4.52815608334432E-14"
+        izz="2.23249244412912E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/AA_3.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/AA_3.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- revolute joint of active arm 3 -->
+  <joint
+    name="m3_1"
+    type="revolute">
+    <origin
+      xyz="0 ${-0.068 * scale} ${0.0195 * scale}"
+      rpy="-1.5708 0.0026716 -1.5708" />
+    <parent
+      link="end_effector" />
+    <child
+      link="AA_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <!-- trailing arm 1 left frame -->
+  <link
+    name="TA_1l">
+    <inertial>
+      <origin
+        xyz="${0.0800000000079653 * scale} ${8.32427599073426E-11 * scale} ${-1.46215539675865E-11 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.010273398639607" />
+      <inertia
+        ixx="1.19525285228756E-07"
+        ixy="4.43046391599724E-13"
+        ixz="-1.56417857286131E-13"
+        iyy="5.31350281430997E-06"
+        iyz="6.48938914507494E-12"
+        izz="5.36670645321548E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_1l.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_1l.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- trailing arm 1 right frame -->
+  <link
+    name="TA_1r">
+    <inertial>
+      <origin
+        xyz="${0.080000000007967 * scale} ${8.32443836085162E-11 * scale} ${-1.46219841790085E-11 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.010273398639607" />
+      <inertia
+        ixx="1.19525285228757E-07"
+        ixy="4.43046499205995E-13"
+        ixz="-1.56418030084161E-13"
+        iyy="5.31350281430997E-06"
+        iyz="6.4893889221994E-12"
+        izz="5.36670645321548E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_1r.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_1r.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- trailing arm 2 left frame -->
+  <link
+    name="TA_2l">
+    <inertial>
+      <origin
+        xyz="${0.0800000000000001 * scale} ${-3.9750286395801E-12 * scale} ${-2.10162651170798E-11 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.0102733985338002" />
+      <inertia
+        ixx="1.1952557892224E-07"
+        ixy="6.5373923623199E-13"
+        ixz="4.41137878374954E-14"
+        iyy="5.31365112452639E-06"
+        iyz="-2.80842144678468E-09"
+        izz="5.36655773348977E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_2l.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_2l.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- trailing arm 2 right frame -->
+  <link
+    name="TA_2r">
+    <inertial>
+      <origin
+        xyz="0.0800000000000043 -8.64198990147003E-12 -2.05957612076091E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.0102733985373147" />
+      <inertia
+        ixx="1.19525569217E-07"
+        ixy="6.48831724135101E-13"
+        ixz="1.63728549751379E-14"
+        iyy="5.31350248338218E-06"
+        iyz="-2.01410448452642E-11"
+        izz="5.36670638848635E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_2r.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_2r.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- trailing arm 3 left frame -->
+  <link
+    name="TA_3l">
+    <inertial>
+      <origin
+        xyz="${0.0799999999999997 * scale} ${-9.19678083688424E-11 * scale} ${-8.99152974298545E-12 * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.0102733986297631" />
+      <inertia
+        ixx="1.19525308280489E-07"
+        ixy="2.80074908503429E-13"
+        ixz="1.72798422916649E-13"
+        iyy="5.31350285562125E-06"
+        iyz="-6.22887915034227E-11"
+        izz="5.36670637691324E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_3l.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_3l.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- trailing arm 3 right frame -->
+  <link
+    name="TA_3r">
+    <inertial>
+      <origin
+        xyz="${0.08 * scale} ${-9.1872592866693E-11 * scale} ${-8.7941320892071E-12 * scale * scale}"
+        rpy="0 0 0" />
+      <mass
+        value="0.0102733986299101" />
+      <inertia
+        ixx="1.19525307908442E-07"
+        ixy="2.78919287712365E-13"
+        ixz="1.718627462257E-13"
+        iyy="5.31350281163241E-06"
+        iyz="3.8869831863215E-11"
+        izz="5.36670642152122E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_3r.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://delta_display/meshes/TA_3r.STL" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- joint between active arms and trailing arms -->
+  <!-- for initialization only - not used in further operation -->
+  <joint
+    name="m1_2"
+    type="revolute">
+    <origin
+      xyz="${0.15715 * scale} ${0.068789 * scale} ${0.017908 * scale}"
+      rpy="-1.5703 0.42459 -2.6169" />
+    <parent
+      link="end_effector" />
+    <child
+      link="TA_1l" />
+    <axis
+      xyz="0.0010252 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="m1_3"
+    type="revolute">
+    <origin
+      xyz="${0.13815 * scale} ${0.1017 * scale} ${0.017908 * scale}"
+      rpy="-1.5703 0.42459 -2.6169" />
+    <parent
+      link="end_effector" />
+    <child
+      link="TA_1r" />
+    <axis
+      xyz="0.0010252 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="m2_2"
+    type="revolute">
+    <origin
+      xyz="${-0.13815 * scale} ${0.1017 * scale} ${0.018616 * scale}"
+      rpy="-1.5718 0.42945 -0.52604" />
+    <parent
+      link="end_effector" />
+    <child
+      link="TA_2l" />
+    <axis
+      xyz="0.0022189 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="m2_3"
+    type="revolute">
+    <origin
+      xyz="${-0.15715 * scale} ${0.068794 * scale} ${0.018616 * scale}"
+      rpy="-1.5718 0.42945 -0.52604" />
+    <parent
+      link="end_effector" />
+    <child
+      link="TA_2r" />
+    <axis
+      xyz="0.0022189 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="m3_2"
+    type="revolute">
+    <origin
+      xyz="${-0.019 * scale} ${-0.1705 * scale} ${0.019226 * scale}"
+      rpy="-1.5702 0.43364 1.5721" />
+    <parent
+      link="end_effector" />
+    <child
+      link="TA_3l" />
+    <axis
+      xyz="-0.0011938 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="m3_3"
+    type="revolute">
+    <origin
+      xyz="${0.019 * scale} ${-0.1705 * scale} ${0.019226 * scale}"
+      rpy="-1.5702 0.43364 1.5721" />
+    <parent
+      link="end_effector" />
+    <child
+      link="TA_3r" />
+    <axis
+      xyz="-0.0011938 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

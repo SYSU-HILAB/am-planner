@@ -1,0 +1,64 @@
+<launch>
+    <!-- 接收参数 -->
+    <arg name="scale" default="1.0" />
+    <!-- delta display -->
+    <param name="robot_description"
+        command="$(find xacro)/xacro $(find delta_display)/urdf/arm.xacro scale:=$(arg scale)" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <node name="display_manager" pkg="delta_display" type="display_manager" output="screen">
+        <remap from="/world/quadrotor" to="/visual_slam/odom" />
+        <!-- not use so3 -->
+        <!-- <remap from="/position_des" to="/so3_desired" /> -->
+        <!-- real-world -->
+        <remap from="~position_des" to="/position_des" />
+        <remap from="~body/end_effector" to="/body/end_effector" />
+    </node>
+
+    <!-- <node name="visual_pcl" pkg="map_pcl" type="visual_pcl" output="screen">
+        <param name="pcd_file_path" value="$(find map_pcl)/pcd/map.pcd" />
+        <param name="frame_id" value="world" />
+        <param name="object_px" value="$(arg object_px)" />
+        <param name="object_py" value="$(arg object_py)" />
+        <param name="object_pz" value="$(arg object_pz)" />
+
+        <param name="object_axis_x" value="$(arg object_axis_x)" />
+        <param name="object_axis_y" value="$(arg object_axis_y)" />
+        <param name="object_axis_z" value="$(arg object_axis_z)" />
+        <param name="object_theta" value="$(arg object_theta)" />
+        <param name="obstacle" value="true" />
+        <remap from="~global_map" to="/global_map" />
+    </node> -->
+
+    <!-- <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3"
+        name="quadrotor_simulator_so3" output="screen">
+        <param name="rate/odom" value="200.0" />
+        <param name="simulator/init_state_x" value="$(arg start_x)" />
+        <param name="simulator/init_state_y" value="$(arg start_y)" />
+        <param name="simulator/init_state_z" value="$(arg start_z)" />
+        <remap from="~odom" to="/visual_slam/odom" />
+        <remap from="~cmd" to="/so3_control/so3_cmd" />
+        <remap from="~force_disturbance" to="force_disturbance" />
+        <remap from="~moment_disturbance" to="moment_disturbance" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" args="standalone so3_control/SO3ControlNodelet"
+        name="so3_control" required="true" output="screen">
+        <param name="so3_control/init_state_x" value="$(arg start_x)" />
+        <param name="so3_control/init_state_y" value="$(arg start_y)" />
+        <param name="so3_control/init_state_z" value="$(arg start_z)" />
+        <remap from="~odom" to="/visual_slam/odom" />
+        <remap from="~position_cmd" to="/so3_desired" />
+        <remap from="~motors" to="motors" />
+        <remap from="~corrections" to="corrections" />
+        <remap from="~so3_cmd" to="/so3_control/so3_cmd" />
+        <rosparam file="$(find so3_control)/config/gains_hummingbird.yaml" />
+        <rosparam file="$(find so3_control)/config/corrections_hummingbird.yaml" />
+        <param name="mass" value="0.98" />
+        <param name="use_angle_corrections" value="false" />
+        <param name="use_external_yaw" value="false" />
+        <param name="gains/rot/z" value="1.0" />
+        <param name="gains/ang/z" value="0.1" />
+    </node> -->
+
+</launch>

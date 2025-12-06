@@ -1,0 +1,55 @@
+MapTopic: "/random_complex/global_map"
+TargetTopic: "/move_base_simple/goal"
+OdomFrame: "world"
+
+# Delta
+UpperArm: 0.10
+LowerArm: 0.16
+StaticRadius: 0.08
+EndEffectorRadius: 0.025
+
+MapHeight: 4.0
+PolyhedronBox: [1.5, 1.5, 1.0]
+MaxLengthLine: 1.5
+Rho: 500
+TotalT: 20
+QdIntervals: 96
+HorizHalfLen: 0.17
+VertHalfLen: 0.12 # init 0.32
+SafeMargin: 0.03
+BiasArmToBody: 0.04 # default the arm is under the body
+VelMax: 1.0
+ThrustAccMin: 3.0
+ThrustAccMax: 15.0
+BodyRateMax: 1.5
+InitVel: 1.5 # dwl
+ArmVelMax: 0.15
+
+BoundArmZ: 0.06
+TaskArmZ: 0.22
+EEDownVel: 0.05
+ObjectHeight: 0.0
+
+GravAcc: 9.81
+PenaltyPVTB: [100000000.0, 10000000.0, 10000000.0, 10000000.0]
+PenaltyArm: [1000000.0, 10000000.0, 1000.0] # workspace, velocity, extend
+PrintCost: True
+UseC2Diffeo: True
+MultiLayerOpt: True
+OptRelTol1: 1.0e-4
+OptRelTol2: 1.0e-6
+S_CurvCoeff: 0.9
+Restart: False
+TrajVizWidth: 1.0
+TrajVizRGB: [0.8, 0.79, 0.0]
+EllipsoidPath: "/misc/data/sphere.stl"
+QuadEllipsoidVizRGBA: [0.682, 0.824, 0.886, 1]
+EEEllipsoidVizRGBA: [0.753, 0.886, 0.792, 1]
+QuadrotorPath: "/misc/data/quadcopter.dae"
+PenaltyGraspWeight: [5000000000.0, 100000000.0, 0.0, 100000000.0]
+OrientationR: 0.1
+GraspR: 0.1
+PlatformR: 1
+SmoothR: 3
+CollectData: False
+CoordinateNum: 10

@@ -1,0 +1,24 @@
+<launch>
+  <!-- Define the parameters -->
+  <!-- set the scale -->
+  <arg name="scale" default="0.5" />
+
+  <param name="scale" type="double" value="$(arg scale)" />
+  <param name="staticR" type="double" value="0.067" />
+  <param name="dynar" type="double" value="0.024" />
+  <param name="upper_arm" type="double" value="0.100" />
+  <param name="lower_arm" type="double" value="0.160" />
+  <param name="rate" type="double" value="100.0" />
+  <param name="debug" type="bool" value="false" />
+
+  <arg name="model" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find delta_display)/urdf/arm.xacro scale:=$(arg scale)" />
+  <node name="robot_state_publisher" 
+        pkg="robot_state_publisher" 
+        type="robot_state_publisher" 
+  />
+
+  <node name="display_manager" pkg="delta_display" type="display_manager" output="screen"></node>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find delta_display)/config/rviz.rviz" />
+</launch>

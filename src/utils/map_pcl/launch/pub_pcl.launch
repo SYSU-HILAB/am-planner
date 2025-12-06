@@ -1,0 +1,7 @@
+<launch>
+    <node name="visual_pcl" pkg="map_pcl" type="visual_pcl" output="screen">
+        <param name="pcd_file_path" value="$(find map_pcl)/pcd/map.pcd"/>
+        <param name="frame_id" value="world"/>
+        <remap from="~global_map" to="/global_map"/>
+    </node>
+</launch>

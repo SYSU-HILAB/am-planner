@@ -1,0 +1,48 @@
+<launch>
+    <param name="mode" type="int" value="0" />
+
+    <param name="start_x" type="double" value="-3.0" />
+    <param name="start_y" type="double" value="0.0" />
+    <param name="start_z" type="double" value="1.2" />
+    <param name="end_x" type="double" value="3.0" />
+    <param name="end_y" type="double" value="0" />
+    <param name="end_z" type="double" value="1.2" />
+
+    <param name="object_qx" type="double" value="0.000" />
+    <param name="object_qy" type="double" value="0.000" />
+    <param name="object_qz" type="double" value="0.000" />
+    <param name="object_qw" type="double" value="0.100" />
+    <param name="object_px" type="double" value="0.000" />
+    <param name="object_py" type="double" value="0.000" />
+    <param name="object_pz" type="double" value="0.600" />
+
+    <param name="num_pre_point" type="int" value="0" />
+    <param name="num_post_point" type="int" value="0" />
+
+    <param name="scale" type="double" value="1.0" />
+    <param name="staticR" type="double" value="0.08" />
+    <param name="dynar" type="double" value="0.025" />
+    <param name="upper_arm" type="double" value="0.100" />
+    <param name="lower_arm" type="double" value="0.160" />
+    <param name="rate" type="double" value="100.0" />
+    <param name="mass" type="double" value="0.98" />
+    <param name="debug" type="bool" value="false" />
+    <param name="debug_endEffector" value="false" />
+    <param name="object_height" type="double" value="0.1" />
+
+    <!-- se3 planning -->
+    <node pkg="plan_manage" type="se3_node" name="se3_node" output="screen">
+        <param name="use_quadrotor_odom" value="false" />
+        <param name="use_object_odom" value="false" />
+        <remap from="~object_odom" to="/odom_converter/converted_odom1" />
+        <remap from="~trajectory" to="/trajectory" />
+        <remap from="~trajectory_arm" to="/trajectory_arm" />
+        <rosparam file="$(find plan_manage)/misc/grasp.yaml" command="load" />
+        <!-- search -->
+        <param name="overlap" value="5" type="int" />
+    </node>
+
+    <!-- dynamic astar -->
+    <include file="$(find plan_manage)/misc/jps3d.xml" />
+
+</launch>

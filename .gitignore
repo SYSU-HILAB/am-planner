@@ -1,1 +1,12 @@
+# dir 
+build/
+devel/
+bag/
+.catkin_workspace
+/logs
+/.catkin_tools
 .DS_Store
+.vscode/
+*.bag
+dit/*
+__pycache__/
