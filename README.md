@@ -167,6 +167,18 @@ If you use this work in your research, please cite our paper:
   doi={10.1109/IROS60139.2025.11247296}
 }
 
+@INPROCEEDINGS{chen2025ndob,
+  author={Chen, Hongming and Ye, Biyu and Liang, Xianqi and Deng, Weiliang and Lyu, Ximin},
+  booktitle={2025 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={NDOB-Based Control of a UAV with Delta-Arm Considering Manipulator Dynamics}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={7505-7511},
+  keywords={Robust control;Couplings;Accuracy;Grasping;Three-dimensional printing;Autonomous aerial vehicles;End effectors;Disturbance observers;Robotics and automation;Manipulator dynamics},
+  doi={10.1109/ICRA55743.2025.11127414}}
+
+
 ```
 
 ## 6. Acknowledgments
